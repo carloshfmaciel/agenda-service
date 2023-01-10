@@ -7,8 +7,6 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,6 +45,12 @@ public class Vote implements Serializable {
 	
 	@Column(name = "id_agenda", nullable = false)
 	UUID agendaId;
+	
+	@Column(name = "yes_answer")
+	Boolean yesAnswer;
+	
+	@Column(name = "no_answer")
+	Boolean noAnswer;
 	
 	@LastModifiedDate
 	@Column(name = "last_modification_date", nullable = false)
