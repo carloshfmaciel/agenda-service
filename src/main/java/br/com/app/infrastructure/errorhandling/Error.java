@@ -2,7 +2,8 @@ package br.com.app.infrastructure.errorhandling;
 
 public enum Error {
 
-	AGENDA_NOT_FOUND("AGENDA_NOT_FOUND", "Agenda not found!");
+	AGENDA_NOT_FOUND("AGENDA_NOT_FOUND", "Agenda not found!"),
+	USER_NOT_FOUND("USER_NOT_FOUND", "User not found!");
 
     private final String code;
     private final String message;
