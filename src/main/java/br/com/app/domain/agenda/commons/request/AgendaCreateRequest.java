@@ -1,5 +1,8 @@
 package br.com.app.domain.agenda.commons.request;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -23,7 +26,9 @@ import lombok.experimental.FieldDefaults;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AgendaCreateRequest {
-		
+	
+	@Valid
+	@NotNull(message = "mandatory_field")
 	String question;
 	
 }

@@ -46,11 +46,8 @@ public class Vote implements Serializable {
 	@Column(name = "id_agenda", nullable = false)
 	UUID agendaId;
 	
-	@Column(name = "yes_answer")
-	Boolean yesAnswer;
-	
-	@Column(name = "no_answer")
-	Boolean noAnswer;
+	@Column(name = "answer")
+	VoteAnswer answer;
 	
 	@LastModifiedDate
 	@Column(name = "last_modification_date", nullable = false)

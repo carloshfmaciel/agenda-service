@@ -1,5 +1,7 @@
 package br.com.app.domain.agenda.controller.create;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,7 +30,7 @@ public class AgendaCreateController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public AgendaResponse create(@RequestBody AgendaCreateRequest agendaCreateRequest) {
+	public AgendaResponse create(@Valid @RequestBody AgendaCreateRequest agendaCreateRequest) {
 		return AgendaConverter.toResponse(agendaCreateService.create(AgendaConverter.toVO(agendaCreateRequest)));
 	}
 

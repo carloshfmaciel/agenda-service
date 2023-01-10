@@ -2,6 +2,8 @@ package br.com.app.domain.agenda.controller.update;
 
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,7 +34,7 @@ public class AgendaUpdateController {
 	@PutMapping("/{agendaId}")
 	@ResponseStatus(HttpStatus.OK)
 	public AgendaResponse create(@PathVariable("agendaId") UUID agendaId,
-			@RequestBody AgendaUpdateRequest agendaUpdateRequest) {
+			@Valid @RequestBody AgendaUpdateRequest agendaUpdateRequest) {
 		return AgendaConverter.toResponse(agendaUpdateService.update(AgendaConverter.toVO(agendaUpdateRequest)));
 	}
 

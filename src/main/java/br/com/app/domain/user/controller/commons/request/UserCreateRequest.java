@@ -1,5 +1,8 @@
 package br.com.app.domain.user.controller.commons.request;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -24,8 +27,12 @@ import lombok.experimental.FieldDefaults;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserCreateRequest {
 
+	@Valid
+	@NotNull(message = "mandatory_field")
 	String username;
 
+	@Valid
+	@NotNull(message = "mandatory_field")
 	String cpf;
 
 }

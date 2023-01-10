@@ -17,4 +17,8 @@ public interface AgendaRepository extends JpaRepository<Agenda, UUID>, JpaSpecif
 	@Query("SELECT a FROM br.com.app.domain.agenda.model.Agenda a WHERE a.id = :agendaId AND a.status = 'ATIVO' ")
 	Optional<Agenda> findByIdAndAgendaStatusIsActive(@Param("agendaId") UUID agendaId);
 
+	@Query("SELECT a FROM br.com.app.domain.agenda.model.Agenda a "
+			+ "WHERE a.id = :agendaId AND a.status = 'ATIVO' AND CURRENT_TIMESTAMP BETWEEN a.startVote AND a.endVote ")
+	Optional<Agenda> findByIdAndAgendaStatusIsActiveAndAgendaIsReceivingVotings(@Param("agendaId") UUID agendaId);
+
 }

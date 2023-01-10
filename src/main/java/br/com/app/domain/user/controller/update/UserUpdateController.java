@@ -2,6 +2,8 @@ package br.com.app.domain.user.controller.update;
 
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,7 +34,7 @@ public class UserUpdateController {
 	@PutMapping("/{userId}")
 	@ResponseStatus(HttpStatus.OK)
 	public UserResponse update(@PathVariable("userId") UUID userId,
-			@RequestBody UserUpdateRequest userUpdateRequest) {
+			@Valid @RequestBody UserUpdateRequest userUpdateRequest) {
 		return UserConverter.toResponse(userUpdateService.update(UserConverter.toVO(userUpdateRequest)));
 	}
 
