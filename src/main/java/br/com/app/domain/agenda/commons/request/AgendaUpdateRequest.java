@@ -26,6 +26,8 @@ import lombok.experimental.FieldDefaults;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AgendaUpdateRequest {
 	
+	String question;
+	
 	LocalDateTime startVote;
 	
 	LocalDateTime endVote;
