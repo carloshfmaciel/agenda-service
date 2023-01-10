@@ -57,6 +57,16 @@ public class AgendaConverter {
 					.build();
 	}
 	
+	public static AgendaResponse toResponse(Agenda agenda) {
+		return AgendaResponse.builder()
+					.id(agenda.getId())
+					.question(agenda.getQuestion())
+					.startVote(agenda.getStartVote())
+					.endVote(agenda.getEndVote())
+					.status(agenda.getStatus())
+					.build();
+	}
+	
 	public static void copyFromFirstToSecond(AgendaVO agendaVO, Agenda agenda) {
 		// @formatter:off
 		agenda.setQuestion(agendaVO.getQuestion());
