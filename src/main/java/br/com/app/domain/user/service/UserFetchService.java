@@ -7,8 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.app.domain.agenda.exception.AgendaNotFoundException;
 import br.com.app.domain.user.controller.commons.converter.UserConverter;
+import br.com.app.domain.user.exception.UserNotFoundException;
 import br.com.app.domain.user.model.User;
 import br.com.app.domain.user.model.UserStatus;
 import br.com.app.domain.user.repository.UserRepository;
@@ -28,7 +28,7 @@ public class UserFetchService {
 
 	public UserVO fetchById(UUID userId) {
 		User user = userRepository.findByIdAndUserStatusIsActive(userId)
-				.orElseThrow(() -> new AgendaNotFoundException(Error.USER_NOT_FOUND.getMessage(),
+				.orElseThrow(() -> new UserNotFoundException(Error.USER_NOT_FOUND.getMessage(),
 						Error.USER_NOT_FOUND.getCode()));
 		return UserConverter.toVO(user);
 	}
