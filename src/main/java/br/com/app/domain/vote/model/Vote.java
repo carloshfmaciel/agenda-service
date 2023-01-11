@@ -7,10 +7,11 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Version;
 
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -47,13 +48,11 @@ public class Vote implements Serializable {
 	UUID agendaId;
 	
 	@Column(name = "answer")
+	@Enumerated(EnumType.STRING)
 	VoteAnswer answer;
 	
 	@LastModifiedDate
 	@Column(name = "last_modification_date", nullable = false)
 	LocalDateTime lastModificationDate;
-
-	@Version
-	Long revision;
 
 }

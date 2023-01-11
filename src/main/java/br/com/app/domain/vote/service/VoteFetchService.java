@@ -1,10 +1,13 @@
 package br.com.app.domain.vote.service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.app.domain.agenda.model.Agenda;
+import br.com.app.domain.agenda.repository.AgendaRepository;
 import br.com.app.domain.vote.controller.commons.response.VotingsSummaryResponse;
 import br.com.app.domain.vote.repository.VoteRepository;
 import lombok.AccessLevel;
@@ -18,11 +21,18 @@ public class VoteFetchService {
 
 	VoteRepository voteRepository;
 
+	AgendaRepository agendaRepository;
+	
 	public VotingsSummaryResponse fetchCountVotingsSummary(UUID agendaId) {
-		int yesCount = voteRepository.fetchCountYesVotingsSummary(agendaId);
-		int noCount = voteRepository.fetchCountNoVotingsSummary(agendaId);
+		Integer yesCount = voteRepository.fetchCountYesVotingsSummary(agendaId);
+		Integer noCount = voteRepository.fetchCountNoVotingsSummary(agendaId);
+		
+		yesCount = yesCount == null ? 0 : yesCount;
+		noCount = noCount == null ? 0 : noCount;
 
-		return new VotingsSummaryResponse(yesCount, noCount);
+		Optional<Agenda> agenda = agendaRepository.findByIdAndAgendaStatusIsActiveAndAgendaIsReceivingVotings(agendaId);
+		
+		return new VotingsSummaryResponse(agendaId, agenda.get().getQuestion(), yesCount, noCount);
 	}
 
 }
