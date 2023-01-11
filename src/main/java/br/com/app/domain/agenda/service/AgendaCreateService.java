@@ -3,7 +3,7 @@ package br.com.app.domain.agenda.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.app.domain.agenda.commons.converter.AgendaConverter;
+import br.com.app.domain.agenda.controller.commons.converter.AgendaConverter;
 import br.com.app.domain.agenda.model.Agenda;
 import br.com.app.domain.agenda.repository.AgendaRepository;
 import br.com.app.domain.agenda.vo.AgendaVO;

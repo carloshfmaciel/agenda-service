@@ -9,7 +9,7 @@ import br.com.app.domain.agenda.exception.AgendaNotFoundException;
 import br.com.app.domain.user.model.User;
 import br.com.app.domain.user.model.UserStatus;
 import br.com.app.domain.user.repository.UserRepository;
-import br.com.app.infrastructure.errorhandling.Error;
+import br.com.app.infrastructure.exception.Error;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;

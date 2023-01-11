@@ -13,7 +13,7 @@ import br.com.app.domain.vote.exception.VoteValidationException;
 import br.com.app.domain.vote.model.Vote;
 import br.com.app.domain.vote.repository.VoteRepository;
 import br.com.app.domain.vote.vo.VoteVO;
-import br.com.app.infrastructure.errorhandling.Error;
+import br.com.app.infrastructure.exception.Error;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
