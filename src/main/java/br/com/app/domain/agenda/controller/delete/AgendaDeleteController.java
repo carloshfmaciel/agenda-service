@@ -21,7 +21,7 @@ import lombok.experimental.FieldDefaults;
 @RequestMapping("/agendas")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(onConstructor_ = @Autowired)
-public class AgendaDeleteController {
+public class AgendaDeleteController implements AgendaDeleteControllerSwagger {
 
 	AgendaDeleteService agendaDeleteService;
 

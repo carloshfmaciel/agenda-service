@@ -22,7 +22,7 @@ import lombok.experimental.FieldDefaults;
 @RequestMapping("/votings")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(onConstructor_ = @Autowired)
-public class VoteFetchController {
+public class VoteFetchController implements VoteFetchControllerSwagger {
 	
 	VoteFetchService voteFetchService;
 	

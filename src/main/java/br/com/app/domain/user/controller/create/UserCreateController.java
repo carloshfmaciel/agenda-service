@@ -24,7 +24,7 @@ import lombok.experimental.FieldDefaults;
 @RequestMapping("/users")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(onConstructor_ = @Autowired)
-public class UserCreateController {
+public class UserCreateController implements UserCreateControllerSwagger {
 
 	UserCreateService userCreateService;
 

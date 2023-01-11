@@ -24,7 +24,7 @@ import lombok.experimental.FieldDefaults;
 @RequestMapping("/votings")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(onConstructor_ = @Autowired)
-public class VoteCreateController {
+public class VoteCreateController implements VoteCreateControllerSwagger {
 
 	VoteCreateService voteCreateService;
 

@@ -24,7 +24,7 @@ import lombok.experimental.FieldDefaults;
 @RequestMapping("/agendas")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(onConstructor_ = @Autowired)
-public class AgendaCreateController {
+public class AgendaCreateController implements AgendaCreateControllerSwagger {
 
 	AgendaCreateService agendaCreateService;
 
