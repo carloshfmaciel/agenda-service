@@ -1,5 +1,7 @@
 package br.com.app.domain.agenda.controller.commons.converter;
 
+import java.util.UUID;
+
 import br.com.app.domain.agenda.controller.commons.request.AgendaCreateRequest;
 import br.com.app.domain.agenda.controller.commons.request.AgendaUpdateRequest;
 import br.com.app.domain.agenda.controller.commons.response.AgendaResponse;
@@ -28,6 +30,16 @@ public class AgendaConverter {
 					.build();
 	}
 	
+	public static AgendaVO toVO(UUID agendaId, AgendaUpdateRequest agendaUpdateRequest) {
+		return AgendaVO.builder()
+					.id(agendaId)
+					.question(agendaUpdateRequest.getQuestion())
+					.startVote(agendaUpdateRequest.getStartVote())
+					.endVote(agendaUpdateRequest.getEndVote())
+					.status(AgendaStatus.ATIVO)
+					.build();
+	}
+	
 	public static AgendaVO toVO(Agenda agenda) {
 		return AgendaVO.builder()
 				.id(agenda.getId())
@@ -44,6 +56,7 @@ public class AgendaConverter {
 					.question(agendaVO.getQuestion())
 					.startVote(agendaVO.getStartVote())
 					.endVote(agendaVO.getEndVote())
+					.status(agendaVO.getStatus())
 					.build();
 	}
 	

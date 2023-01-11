@@ -35,7 +35,8 @@ public class AgendaUpdateController implements AgendaUpdateControllerSwagger {
 	@ResponseStatus(HttpStatus.OK)
 	public AgendaResponse create(@PathVariable("agendaId") UUID agendaId,
 			@Valid @RequestBody AgendaUpdateRequest agendaUpdateRequest) {
-		return AgendaConverter.toResponse(agendaUpdateService.update(AgendaConverter.toVO(agendaUpdateRequest)));
+		return AgendaConverter
+				.toResponse(agendaUpdateService.update(AgendaConverter.toVO(agendaId, agendaUpdateRequest)));
 	}
 
 }
