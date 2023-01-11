@@ -18,7 +18,7 @@ import lombok.experimental.FieldDefaults;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/agendas")
+@RequestMapping("/users")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(onConstructor_ = @Autowired)
 public class UserDeleteController implements UserDeleteControllerSwagger {

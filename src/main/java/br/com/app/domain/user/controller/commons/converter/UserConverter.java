@@ -1,5 +1,7 @@
 package br.com.app.domain.user.controller.commons.converter;
 
+import java.util.UUID;
+
 import br.com.app.domain.user.controller.commons.request.UserCreateRequest;
 import br.com.app.domain.user.controller.commons.request.UserUpdateRequest;
 import br.com.app.domain.user.controller.commons.response.UserResponse;
@@ -27,6 +29,14 @@ public class UserConverter {
 					.build();
 	}
 	
+	public static UserVO toVO(UUID userId, UserUpdateRequest userUpdateRequest) {
+		return UserVO.builder()
+					.id(userId)
+					.username(userUpdateRequest.getUsername())
+					.cpf(userUpdateRequest.getCpf())
+					.build();
+	}
+	
 	public static UserVO toVO(User user) {
 		return UserVO.builder()
 				.id(user.getId())
@@ -41,6 +51,7 @@ public class UserConverter {
 					.id(userVO.getId())
 					.username(userVO.getUsername())
 					.cpf(userVO.getCpf())
+					.status(userVO.getStatus())
 					.build();
 	}
 	

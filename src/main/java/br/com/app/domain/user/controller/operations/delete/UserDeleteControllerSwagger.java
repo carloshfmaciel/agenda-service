@@ -6,8 +6,8 @@ import static br.com.app.infrastructure.swagger.MessageReturnOperations.RETURN_I
 
 import java.util.UUID;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,7 +25,7 @@ public interface UserDeleteControllerSwagger {
 	
 	@Operation(summary = "It inactives an user by id", description = "REST Endpoint that inactivates an user by id")
 	@Tags(value = @Tag(name = "users", description = "Everything about agendas"))
-	@PostMapping(value = "/users", produces = "application/json", consumes = "application/json")
+	@DeleteMapping(value = "/{userId}")
 	@ApiResponses(value = { @ApiResponse(responseCode = "204", description = "No Content"),
 			@ApiResponse(responseCode = "400", description = "Bad Request",
 					content = @Content(schema = @Schema(example = RETURN_ID_400))),

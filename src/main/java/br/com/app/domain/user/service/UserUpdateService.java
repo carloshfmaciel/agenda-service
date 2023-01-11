@@ -22,8 +22,8 @@ public class UserUpdateService {
 
 	public UserVO update(UserVO userVO) {
 		User user = userRepository.findByIdAndUserStatusIsActive(userVO.getId())
-				.orElseThrow(() -> new UserNotFoundException(Error.AGENDA_NOT_FOUND.getMessage(),
-						Error.AGENDA_NOT_FOUND.getCode()));
+				.orElseThrow(() -> new UserNotFoundException(Error.USER_NOT_FOUND.getMessage(),
+						Error.USER_NOT_FOUND.getCode()));
 		UserConverter.copyFromFirstToSecond(userVO, user);
 		userRepository.save(user);
 		return UserConverter.toVO(user);

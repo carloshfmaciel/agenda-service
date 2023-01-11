@@ -35,7 +35,7 @@ public class UserUpdateController implements UserUpdateControllerSwagger {
 	@ResponseStatus(HttpStatus.OK)
 	public UserResponse update(@PathVariable("userId") UUID userId,
 			@Valid @RequestBody UserUpdateRequest userUpdateRequest) {
-		return UserConverter.toResponse(userUpdateService.update(UserConverter.toVO(userUpdateRequest)));
+		return UserConverter.toResponse(userUpdateService.update(UserConverter.toVO(userId, userUpdateRequest)));
 	}
 
 }

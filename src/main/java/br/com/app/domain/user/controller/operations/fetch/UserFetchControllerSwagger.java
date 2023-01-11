@@ -57,6 +57,6 @@ public interface UserFetchControllerSwagger {
 			@RequestParam(value = "cpf", required = false) UserStatus status, 
 			@RequestParam(value = "0") Integer page, 
 			@RequestParam(value = "30") Integer pageSize, 
-			@RequestParam(value = "username", required = false) String sortBy);
+			@RequestParam(defaultValue = "username") String sortBy);
 
 }
