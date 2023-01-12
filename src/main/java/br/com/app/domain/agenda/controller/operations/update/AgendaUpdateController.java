@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.app.domain.agenda.controller.commons.converter.AgendaConverter;
 import br.com.app.domain.agenda.controller.commons.request.AgendaUpdateRequest;
+import br.com.app.domain.agenda.controller.commons.request.AgendaUpdateVoteTimeRequest;
 import br.com.app.domain.agenda.controller.commons.response.AgendaResponse;
 import br.com.app.domain.agenda.service.AgendaUpdateService;
 import lombok.AccessLevel;
@@ -33,10 +34,18 @@ public class AgendaUpdateController implements AgendaUpdateControllerSwagger {
 
 	@PutMapping("/{agendaId}")
 	@ResponseStatus(HttpStatus.OK)
-	public AgendaResponse create(@PathVariable("agendaId") UUID agendaId,
+	public AgendaResponse update(@PathVariable("agendaId") UUID agendaId,
 			@Valid @RequestBody AgendaUpdateRequest agendaUpdateRequest) {
 		return AgendaConverter
 				.toResponse(agendaUpdateService.update(AgendaConverter.toVO(agendaId, agendaUpdateRequest)));
+	}
+	
+	@PutMapping("/{agendaId}/votings/start")
+	@ResponseStatus(HttpStatus.OK)
+	public AgendaResponse updateVoteTime(@PathVariable("agendaId") UUID agendaId,
+			@Valid @RequestBody AgendaUpdateVoteTimeRequest agendaUpdateVoteTimeRequest) {
+		return AgendaConverter
+				.toResponse(agendaUpdateService.updateVoteTime(AgendaConverter.toVO(agendaId, agendaUpdateVoteTimeRequest)));
 	}
 
 }

@@ -4,7 +4,11 @@ public enum Error {
 
 	AGENDA_NOT_FOUND("AGENDA_NOT_FOUND", "Agenda not found!"),
 	USER_NOT_FOUND("USER_NOT_FOUND", "User not found!"),
-	USER_HAS_ALREADY_VOTED("USER_HAS_ALREADY_VOTED", "User has already voted!");
+	USER_HAS_ALREADY_VOTED("USER_HAS_ALREADY_VOTED", "User has already voted!"),
+	DATE_NOT_INFORMED("DATE_NOT_INFORMED", "Both dates must be informed!"),
+	DATES_IS_EQUALS("DATES_IS_EQUALS", "Dates must be different betwen each other!"),
+	DATE_IS_LESS_THAN_NOW("DATE_IS_LESS_THAN_NOW", "Dates must be higher than now!"),
+	DATE_INITIAL_MUST_BE_LESS("DATE_INITIAL_MUST_BE_LESS", "Initial date must be less than end date!");
 
     private final String code;
     private final String message;

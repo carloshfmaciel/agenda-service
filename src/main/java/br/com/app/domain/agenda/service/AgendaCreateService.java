@@ -23,5 +23,4 @@ public class AgendaCreateService {
 		agendaRepository.save(agenda);
 		return AgendaConverter.toVO(agenda);
 	}
-
 }

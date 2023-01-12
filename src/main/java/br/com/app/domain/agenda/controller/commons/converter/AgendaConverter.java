@@ -2,8 +2,11 @@ package br.com.app.domain.agenda.controller.commons.converter;
 
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
+
 import br.com.app.domain.agenda.controller.commons.request.AgendaCreateRequest;
 import br.com.app.domain.agenda.controller.commons.request.AgendaUpdateRequest;
+import br.com.app.domain.agenda.controller.commons.request.AgendaUpdateVoteTimeRequest;
 import br.com.app.domain.agenda.controller.commons.response.AgendaResponse;
 import br.com.app.domain.agenda.model.Agenda;
 import br.com.app.domain.agenda.model.AgendaStatus;
@@ -24,8 +27,6 @@ public class AgendaConverter {
 	public static AgendaVO toVO(AgendaUpdateRequest agendaUpdateRequest) {
 		return AgendaVO.builder()
 					.question(agendaUpdateRequest.getQuestion())
-					.startVote(agendaUpdateRequest.getStartVote())
-					.endVote(agendaUpdateRequest.getEndVote())
 					.status(AgendaStatus.ATIVO)
 					.build();
 	}
@@ -34,9 +35,15 @@ public class AgendaConverter {
 		return AgendaVO.builder()
 					.id(agendaId)
 					.question(agendaUpdateRequest.getQuestion())
-					.startVote(agendaUpdateRequest.getStartVote())
-					.endVote(agendaUpdateRequest.getEndVote())
 					.status(AgendaStatus.ATIVO)
+					.build();
+	}
+	
+	public static AgendaVO toVO(UUID agendaId, AgendaUpdateVoteTimeRequest agendaUpdateVoteTimeRequest) {
+		return AgendaVO.builder()
+					.id(agendaId)
+					.startVote(agendaUpdateVoteTimeRequest.getStartVote())
+					.endVote(agendaUpdateVoteTimeRequest.getEndVote())
 					.build();
 	}
 	
@@ -82,7 +89,9 @@ public class AgendaConverter {
 	
 	public static void copyFromFirstToSecond(AgendaVO agendaVO, Agenda agenda) {
 		// @formatter:off
-		agenda.setQuestion(agendaVO.getQuestion());
+		if(!StringUtils.isBlank(agendaVO.getQuestion())) {
+			agenda.setQuestion(agendaVO.getQuestion());
+		}
 		agenda.setStartVote(agendaVO.getStartVote());
 		agenda.setEndVote(agendaVO.getEndVote());
 		// @formatter:on

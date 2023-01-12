@@ -1,7 +1,6 @@
 package br.com.app.domain.agenda.controller.commons.request;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -25,10 +24,11 @@ import lombok.experimental.FieldDefaults;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AgendaUpdateRequest {
+public class AgendaUpdateVoteTimeRequest {
 	
-	@Valid
-	@NotNull(message = "mandatory_field")
-	String question;
+	LocalDateTime startVote;
+	
+	LocalDateTime endVote;
+	
 
 }

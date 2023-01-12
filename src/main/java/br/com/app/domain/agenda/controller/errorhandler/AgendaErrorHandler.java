@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import br.com.app.domain.agenda.exception.AgendaNotFoundException;
+import br.com.app.domain.agenda.exception.AgendaValidationException;
 import br.com.app.infrastructure.exception.ErrorResponse;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,14 @@ public class AgendaErrorHandler {
 	public ErrorResponse handleAgendaNotFoundException(AgendaNotFoundException ex) {
 		log.error(ex.getMessage(), ex);
 		return new ErrorResponse(HttpStatus.NOT_FOUND.value(), LocalDateTime.now(), ex.getMessage(),
+				ex.getErrorCode());
+	}
+	
+	@ExceptionHandler(value = { AgendaValidationException.class })
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public ErrorResponse handleAgendaValidationException(AgendaValidationException ex) {
+		log.error(ex.getMessage(), ex);
+		return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), LocalDateTime.now(), ex.getMessage(),
 				ex.getErrorCode());
 	}
 
