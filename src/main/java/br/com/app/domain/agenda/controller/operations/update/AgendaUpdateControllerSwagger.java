@@ -69,6 +69,6 @@ public interface AgendaUpdateControllerSwagger {
 			@ApiResponse(responseCode = "500", description = "The specified resource internal error",
 					content = @Content(schema = @Schema(example = RETURN_500))) })
 	public AgendaResponse updateVoteTime(@PathVariable("agendaId") UUID agendaId,
-			@Valid @RequestBody AgendaUpdateVoteTimeRequest agendaUpdateVoteTimeRequest);
+			 @RequestBody AgendaUpdateVoteTimeRequest agendaUpdateVoteTimeRequest);
 
 }

@@ -39,13 +39,13 @@ public class AgendaUpdateController implements AgendaUpdateControllerSwagger {
 		return AgendaConverter
 				.toResponse(agendaUpdateService.update(AgendaConverter.toVO(agendaId, agendaUpdateRequest)));
 	}
-	
+
 	@PutMapping("/{agendaId}/votings/start")
 	@ResponseStatus(HttpStatus.OK)
 	public AgendaResponse updateVoteTime(@PathVariable("agendaId") UUID agendaId,
-			@Valid @RequestBody AgendaUpdateVoteTimeRequest agendaUpdateVoteTimeRequest) {
-		return AgendaConverter
-				.toResponse(agendaUpdateService.updateVoteTime(AgendaConverter.toVO(agendaId, agendaUpdateVoteTimeRequest)));
+			@RequestBody AgendaUpdateVoteTimeRequest agendaUpdateVoteTimeRequest) {
+		return AgendaConverter.toResponse(
+				agendaUpdateService.updateVoteTime(AgendaConverter.toVO(agendaId, agendaUpdateVoteTimeRequest)));
 	}
 
 }

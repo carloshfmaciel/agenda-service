@@ -22,5 +22,9 @@ public interface VoteRepository extends JpaRepository<Vote, UUID> {
 	Integer fetchCountNoVotingsSummary(@Param("agendaId") UUID agendaId);
 	
 	Optional<Vote> findByUserIdAndAgendaId(UUID userId, UUID agendaId);
+	
+	@Query("SELECT CASE WHEN (COUNT(v.answer) > 0) THEN true ELSE false END FROM br.com.app.domain.vote.model.Vote v "
+			+ "WHERE v.agendaId = :agendaId")
+	boolean existsSomeVoteByAgendaId(UUID agendaId);
 
 }

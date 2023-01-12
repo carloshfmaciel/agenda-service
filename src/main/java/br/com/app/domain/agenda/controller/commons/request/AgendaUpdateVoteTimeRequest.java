@@ -29,6 +29,5 @@ public class AgendaUpdateVoteTimeRequest {
 	LocalDateTime startVote;
 	
 	LocalDateTime endVote;
-	
 
 }
