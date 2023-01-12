@@ -16,7 +16,7 @@ import lombok.experimental.FieldDefaults;
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(onConstructor_ = @Autowired)
-public class UpdateAgendaVoteTimeValidation {
+public class AgendaUpdateVoteTimeValidation {
 
 	VoteRepository voteRepository;
 
@@ -49,30 +49,23 @@ public class UpdateAgendaVoteTimeValidation {
 	}
 
 	private void validateIfDatesAreHigherThanNow(AgendaVO agendaVO) {
-		if (hasDatesToValidate(agendaVO)) {
-			if (agendaVO.getStartVote().isBefore(LocalDateTime.now())
-					|| agendaVO.getEndVote().isBefore(LocalDateTime.now())) {
-				throw new AgendaValidationException(Error.DATE_IS_LESS_THAN_NOW.getMessage(),
-						Error.DATE_IS_LESS_THAN_NOW.getCode());
-			}
+		if (hasDatesToValidate(agendaVO) && (agendaVO.getStartVote().isBefore(LocalDateTime.now())
+				|| agendaVO.getEndVote().isBefore(LocalDateTime.now()))) {
+			throw new AgendaValidationException(Error.DATE_IS_LESS_THAN_NOW.getMessage(),
+					Error.DATE_IS_LESS_THAN_NOW.getCode());
 		}
 	}
 
 	private void validateIfDateIsEquals(AgendaVO agendaVO) {
-		if (hasDatesToValidate(agendaVO)) {
-			if (agendaVO.getStartVote().equals(agendaVO.getEndVote())) {
-				throw new AgendaValidationException(Error.DATES_IS_EQUALS.getMessage(),
-						Error.DATES_IS_EQUALS.getCode());
-			}
+		if (hasDatesToValidate(agendaVO) && agendaVO.getStartVote().equals(agendaVO.getEndVote())) {
+			throw new AgendaValidationException(Error.DATES_IS_EQUALS.getMessage(), Error.DATES_IS_EQUALS.getCode());
 		}
 	}
 
 	private void validateIfInitialDateIsLessThanEndDate(AgendaVO agendaVO) {
-		if (hasDatesToValidate(agendaVO)) {
-			if (!agendaVO.getStartVote().isBefore(agendaVO.getEndVote())) {
-				throw new AgendaValidationException(Error.DATE_INITIAL_MUST_BE_LESS.getMessage(),
-						Error.DATE_INITIAL_MUST_BE_LESS.getCode());
-			}
+		if (hasDatesToValidate(agendaVO) && !agendaVO.getStartVote().isBefore(agendaVO.getEndVote())) {
+			throw new AgendaValidationException(Error.DATE_INITIAL_MUST_BE_LESS.getMessage(),
+					Error.DATE_INITIAL_MUST_BE_LESS.getCode());
 		}
 	}
 

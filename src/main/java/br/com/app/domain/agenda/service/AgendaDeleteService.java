@@ -5,10 +5,12 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.app.domain.agenda.controller.commons.converter.AgendaConverter;
 import br.com.app.domain.agenda.exception.AgendaNotFoundException;
 import br.com.app.domain.agenda.model.Agenda;
 import br.com.app.domain.agenda.model.AgendaStatus;
 import br.com.app.domain.agenda.repository.AgendaRepository;
+import br.com.app.domain.agenda.vo.AgendaVO;
 import br.com.app.infrastructure.exception.Error;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -21,12 +23,13 @@ public class AgendaDeleteService {
 
 	AgendaRepository agendaRepository;
 
-	public void delete(UUID agendaId) {
+	public AgendaVO delete(UUID agendaId) {
 		Agenda agenda = agendaRepository.findByIdAndAgendaStatusIsActive(agendaId)
 				.orElseThrow(() -> new AgendaNotFoundException(Error.AGENDA_NOT_FOUND.getMessage(),
 						Error.AGENDA_NOT_FOUND.getCode()));
 		agenda.setStatus(AgendaStatus.INATIVO);
-		agendaRepository.save(agenda);
+		agenda = agendaRepository.save(agenda);
+		return AgendaConverter.toVO(agenda);
 	}
 
 }

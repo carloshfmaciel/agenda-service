@@ -1,11 +1,8 @@
 package br.com.app.domain.user.vo;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
-import br.com.app.domain.agenda.model.AgendaStatus;
-import br.com.app.domain.agenda.vo.AgendaVO;
 import br.com.app.domain.user.model.UserStatus;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

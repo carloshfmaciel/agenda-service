@@ -20,7 +20,7 @@ public class AgendaCreateService {
 
 	public AgendaVO create(AgendaVO agendaVO) {
 		Agenda agenda = AgendaConverter.toEntity(agendaVO);
-		agendaRepository.save(agenda);
+		agenda = agendaRepository.save(agenda);
 		return AgendaConverter.toVO(agenda);
 	}
 }

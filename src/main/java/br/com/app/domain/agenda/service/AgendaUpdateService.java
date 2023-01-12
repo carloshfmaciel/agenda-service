@@ -9,7 +9,7 @@ import br.com.app.domain.agenda.controller.commons.converter.AgendaConverter;
 import br.com.app.domain.agenda.exception.AgendaNotFoundException;
 import br.com.app.domain.agenda.model.Agenda;
 import br.com.app.domain.agenda.repository.AgendaRepository;
-import br.com.app.domain.agenda.validation.UpdateAgendaVoteTimeValidation;
+import br.com.app.domain.agenda.validation.AgendaUpdateVoteTimeValidation;
 import br.com.app.domain.agenda.vo.AgendaVO;
 import br.com.app.infrastructure.exception.Error;
 import lombok.AccessLevel;
@@ -23,7 +23,7 @@ public class AgendaUpdateService {
 
 	AgendaRepository agendaRepository;
 	
-	UpdateAgendaVoteTimeValidation updateAgendaVoteTimeValidation;
+	AgendaUpdateVoteTimeValidation updateAgendaVoteTimeValidation;
 
 	public AgendaVO update(AgendaVO agendaVO) {
 		Agenda agenda = agendaRepository.findByIdAndAgendaStatusIsActive(agendaVO.getId())
