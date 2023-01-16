@@ -3,7 +3,7 @@
 
 ## About the project
 
-This project was built to show knowledges about Java, Spring and REST apis.
+This project was built to show knowledges about Java, Spring and REST apis as explained at the [doc](docs/Desafio_Back.pdf).
 
 ## Starting project
 
