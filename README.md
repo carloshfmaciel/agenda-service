@@ -1,3 +1,6 @@
+## About Me
+[Linkedin](https://www.linkedin.com/in/carloshfmaciel/)
+
 ## About the project
 
 This project was built to show knowledges about Java, Spring and REST apis.
