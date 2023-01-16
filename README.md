@@ -55,3 +55,9 @@ http://localhost:3000/h2-console/login.jsp
 
 ![](docs/screenshots/0005.jpg)
 
+### Finishing voting session
+
+Every minute has a cron that query database looking for some agenda whose end date is less than current time and has status "ATIVO".
+When it is found, this cron updates agenda status to "FINALIZADO" and dispatch async message to topic.
+
+![](docs/screenshots/0006.jpg)
