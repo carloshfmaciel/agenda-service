@@ -22,6 +22,7 @@ java -jar target/agenda-service-0.0.1-SNAPSHOT.jar
   - Resilience4j as a circuit breaker for REST apis
   - Spring Rest Template as an external api caller
   - Spring Cron Scheduler to finish vote session
+  - ActiveMQ Embeddable to produce async message when agenda vote session has finished
 
 ## Project organization
 
