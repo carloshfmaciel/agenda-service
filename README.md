@@ -20,7 +20,8 @@ java -jar target/agenda-service-0.0.1-SNAPSHOT.jar
   - Embedded database H2 using file persistence mode
   - Flyway as a database migration manager
   - Resilience4j as a circuit breaker for REST apis
-  - Spring Rest Template as a external caller apis
+  - Spring Rest Template as an external api caller
+  - Spring Cron Scheduler to finish vote session
 
 ## Project organization
 
@@ -28,3 +29,13 @@ Trying to organize using clean code good pratices, each class was thought to hav
 This way each class was developed to have as much as possible just one resposibility and represents only one operation, facilitating this way unit tests and of course, the mantainability. 
 
 ![](docs/screenshots/0001.jpg)
+
+## Database ERD
+
+![](docs/screenshots/0002.jpg)
+
+## Unit Tests
+
+Here, we have used mockito covering only the main services used by endpoint. It is always interest to cover 100% of service layer.
+
+![](docs/screenshots/0003.jpg)
