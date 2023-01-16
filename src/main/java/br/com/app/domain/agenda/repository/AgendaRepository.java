@@ -1,5 +1,6 @@
 package br.com.app.domain.agenda.repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -21,4 +22,8 @@ public interface AgendaRepository extends JpaRepository<Agenda, UUID>, JpaSpecif
 			+ "WHERE a.id = :agendaId AND a.status = 'ATIVO' AND CURRENT_TIMESTAMP BETWEEN a.startVote AND a.endVote ")
 	Optional<Agenda> findByIdAndAgendaStatusIsActiveAndAgendaIsReceivingVotings(@Param("agendaId") UUID agendaId);
 
+	@Query("SELECT a FROM br.com.app.domain.agenda.model.Agenda a WHERE a.endVote < CURRENT_TIMESTAMP AND a.status = 'ATIVO' ")
+	List<Agenda> findAgendaVotingsFinalizedAndStatusIsActive();
+
+	
 }
