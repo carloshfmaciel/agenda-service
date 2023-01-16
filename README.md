@@ -40,3 +40,18 @@ This way each class was developed to have as much as possible just one resposibi
 Here, we have used mockito covering only the main services used by endpoint. It is always interest to cover 100% of service layer.
 
 ![](docs/screenshots/0003.jpg)
+
+
+## Database
+
+It is possible to access H2 database ui through url
+```
+http://localhost:3000/h2-console/login.jsp
+```
+
+** It is not necessary inform password
+
+![](docs/screenshots/0004.jpg)
+
+![](docs/screenshots/0005.jpg)
+
