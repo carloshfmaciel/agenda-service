@@ -52,3 +52,19 @@ resilience4j:
         
 schedule:
   finalized-vote-session: "0 0/1 * * * ?" # runs each 1 minute
+  
+#############################################################################
+## RestTemplate configuration
+#############################################################################  
+resttemplate:
+  connection-timeout: 10000
+  read-timeout: 10000
+
+#############################################################################
+## External Integration APIs
+#############################################################################
+  
+integration:
+  api:
+    cpf-validation:
+      url: http://localhost:3001/users

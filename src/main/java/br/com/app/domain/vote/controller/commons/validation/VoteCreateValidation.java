@@ -10,6 +10,7 @@ import br.com.app.domain.agenda.repository.AgendaRepository;
 import br.com.app.domain.user.model.User;
 import br.com.app.domain.user.repository.UserRepository;
 import br.com.app.domain.vote.exception.VoteValidationException;
+import br.com.app.domain.vote.integration.cpf.client.CpfClientAPI;
 import br.com.app.domain.vote.model.Vote;
 import br.com.app.domain.vote.repository.VoteRepository;
 import br.com.app.domain.vote.vo.VoteVO;
@@ -29,6 +30,8 @@ public class VoteCreateValidation {
 
 	VoteRepository voteRepository;
 
+	CpfClientAPI cpfClientAPI;
+
 	public void validate(VoteVO voteVO) {
 
 		// // VERIFY IF AGENDA IS VALID AND IS RECEIVING VOTINGS
@@ -42,6 +45,12 @@ public class VoteCreateValidation {
 		Optional<User> user = userRepository.findByIdAndUserStatusIsActive(voteVO.getUserId());
 		if (user.isEmpty()) {
 			throw new VoteValidationException(Error.USER_NOT_FOUND.getMessage(), Error.USER_NOT_FOUND.getCode());
+		}
+
+		// VERIFY IF USER IS ABLE TO VOTE
+		if (!cpfClientAPI.isCpfAbleToVote(user.get().getCpf())) {
+			throw new VoteValidationException(Error.USER_IS_NOT_ABLE_TO_VOTE.getMessage(),
+					Error.USER_IS_NOT_ABLE_TO_VOTE.getCode());
 		}
 
 		// VERIFY IF USER HAS ALREADY VOTED

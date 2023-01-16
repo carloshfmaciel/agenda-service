@@ -9,7 +9,10 @@ public enum Error {
 	DATES_IS_EQUALS("DATES_IS_EQUALS", "Dates must be different betwen each other!"),
 	DATE_IS_LESS_THAN_NOW("DATE_IS_LESS_THAN_NOW", "Dates must be higher than now!"),
 	DATE_INITIAL_MUST_BE_LESS("DATE_INITIAL_MUST_BE_LESS", "Initial date must be less than end date!"),
-	THERE_IS_VOTE_FOR_AGENDA("THERE_IS_VOTE_FOR_AGENDA", "Because there is already vote for this agenda, it can not be updated!");
+	THERE_IS_VOTE_FOR_AGENDA("THERE_IS_VOTE_FOR_AGENDA", "Because there is already vote for this agenda, it can not be updated!"),
+	CPF_INTEGRATION_ERROR("CPF_INTEGRATION_ERROR", "An error occurred when validates cpf!"),
+	CPF_IS_INVALID("CPF_IS_INVALID", "Cpf is invalid!"),
+	USER_IS_NOT_ABLE_TO_VOTE("USER_IS_NOT_ABLE_TO_VOTE", "User is not able to vote!"),;
 
     private final String code;
     private final String message;

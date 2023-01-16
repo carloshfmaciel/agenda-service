@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import br.com.app.domain.vote.exception.VoteValidationException;
+import br.com.app.domain.vote.integration.cpf.exception.CpfIntegrationException;
 import br.com.app.infrastructure.exception.ErrorResponse;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,14 @@ public class VoteErrorHandler {
 	public ErrorResponse handleVoteValidationException(VoteValidationException ex) {
 		log.error(ex.getMessage(), ex);
 		return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), LocalDateTime.now(), ex.getMessage(),
+				ex.getErrorCode());
+	}
+	
+	@ExceptionHandler(value = { CpfIntegrationException.class })
+	@ResponseStatus(value = HttpStatus.FAILED_DEPENDENCY)
+	public ErrorResponse handleVoteValidationException(CpfIntegrationException ex) {
+		log.error(ex.getMessage(), ex);
+		return new ErrorResponse(HttpStatus.FAILED_DEPENDENCY.value(), LocalDateTime.now(), ex.getMessage(),
 				ex.getErrorCode());
 	}
 
