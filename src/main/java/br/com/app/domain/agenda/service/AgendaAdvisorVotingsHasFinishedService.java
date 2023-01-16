@@ -1,5 +1,6 @@
 package br.com.app.domain.agenda.service;
 
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,21 @@ import lombok.experimental.FieldDefaults;
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor(onConstructor_ = @Autowired)
-public class AgendaAdvisorWhenVotingsFinishService {
+public class AgendaAdvisorVotingsHasFinishedService {
 	
 	VoteFetchService voteFetchService;
 	
 	VoteHasFinishedProducer voteHasFinishedProducer;
 
-	public void adviseAllThatVotingsHasFinished(UUID agendaId) {
+	public void adviseAll(UUID agendaId) {
 		VotingsSummaryResponse votingsSummary = voteFetchService.fetchCountVotingsSummary(agendaId);
 		voteHasFinishedProducer.send(votingsSummary);
+	}
+	
+	public void adviseAll(Set<UUID> agendaIds) {
+		agendaIds.forEach(agendaId -> {
+			this.adviseAll(agendaId);
+		});
 	}
 	
 }
