@@ -20,7 +20,7 @@ java -jar target/agenda-service-0.0.1-SNAPSHOT.jar
   - Embedded database H2 using file persistence mode
   - Flyway as a database migration manager
   - Resilience4j as a circuit breaker for REST apis
-  - Spring Rest Template as a external caller apis
+  - Spring Rest Template as an external api caller
   - Spring Cron Scheduler to finish vote session
 
 ## Project organization
