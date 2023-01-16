@@ -5,10 +5,11 @@ server:
   port: ${PORT:3000}
 
 #############################################################################
-## Database configuration
+## Spring configuration
 #############################################################################
   
 spring:
+  ##  Database
   sql:
     init:
       platform: 
@@ -23,6 +24,11 @@ spring:
   h2:
     console:
       enabled: true
+  ## Active-MQ
+  activemq:
+    broker-url: vm://embedded?broker.persistent=false,useShutdownHook=false
+    broker-username: admin
+    broker-password: admin
 
 #############################################################################
 ## Circuit breaker configuration
@@ -68,3 +74,10 @@ integration:
   api:
     cpf-validation:
       url: http://localhost:3001/users
+      
+#############################################################################
+## Topics Async Message
+#############################################################################      
+message:
+  topic:
+    agenda-finish-votings: agenda-finish-votings
