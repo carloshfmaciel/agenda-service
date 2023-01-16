@@ -27,3 +27,4 @@ java -jar target/agenda-service-0.0.1-SNAPSHOT.jar
 Trying to organize using clean code good pratices, each class was thought to have highly cohesion and low coupling.<br>
 This way each class was developed to have as much as possible just one resposibility and represents only one operation, facilitating this way unit tests and of course, the mantainability. 
 
+![](docs/screenshots/0001.jpg)
