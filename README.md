@@ -1,5 +1,5 @@
 ## About Me
-[Linkedin](https://www.linkedin.com/in/carloshfmaciel/)
+[Carlos Maciel - Linkedin Profile](https://www.linkedin.com/in/carloshfmaciel/)
 
 ## About the project
 
@@ -54,6 +54,19 @@ http://localhost:3000/h2-console/login.jsp
 ![](docs/screenshots/0004.jpg)
 
 ![](docs/screenshots/0005.jpg)
+
+## How to vote
+
+- 1 - Register a user with a valid cpf
+![](docs/screenshots/0007.jpg)
+- 2 - Register a agenda
+![](docs/screenshots/0008.jpg)
+- 3 - Define a schedule to start the vote
+  - If no value is informed it immediately starts vote with a period of 1 minute from current time.
+![](docs/screenshots/0009.jpg)
+- 4 - Register a vote
+  - Here the api will be request from cpf-service if user is able to vote. Randomly the cpf-service is returning yes or no, simulating some business rule. 
+![](docs/screenshots/0010.jpg)
 
 ### Finishing voting session
 
