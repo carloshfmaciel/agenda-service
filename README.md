@@ -58,15 +58,15 @@ http://localhost:3000/h2-console/login.jsp
 ## How to vote
 
 - 1 - Register a user with a valid cpf
-![](docs/screenshots/0007.jpg)
+![](docs/screenshots/0007.JPG)
 - 2 - Register a agenda
-![](docs/screenshots/0008.jpg)
+![](docs/screenshots/0008.JPG)
 - 3 - Define a schedule to start the vote
   - If no value is informed it immediately starts vote with a period of 1 minute from current time.
-![](docs/screenshots/0009.jpg)
+![](docs/screenshots/0009.JPG)
 - 4 - Register a vote
   - Here the api will be request from cpf-service if user is able to vote. Randomly the cpf-service is returning yes or no, simulating some business rule. 
-![](docs/screenshots/0010.jpg)
+![](docs/screenshots/0010.JPG)
 
 ### Finishing voting session
 
