@@ -33,8 +33,7 @@ public class AgendaSchedule {
 
 		log.info("Running schedule task to finish agenda vote session!");
 
-		List<Agenda> agendas = agendaRepository.findAgendaVotingsFinalizedAndStatusIsActive();
-		
+		List<Agenda> agendas = agendaRepository.findAgendaVotingsFinalizedAndStatusIsActive();	
 
 		if (!agendas.isEmpty()) {
 			try {
